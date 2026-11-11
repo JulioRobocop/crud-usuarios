@@ -56,8 +56,8 @@ function App() {
     <>
       <h1>Usuarios:</h1>
       <form onSubmit={handleSubmit}>
-        <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Nome" />
-        <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-mail" />
+        <input value={name} required onChange={(e) => setName(e.target.value)} placeholder="Nome" />
+        <input value={email} required onChange={(e) => setEmail(e.target.value)} placeholder="E-mail" />
         <input value={role} onChange={(e) => setRole(e.target.value)} placeholder="Cargo (opcional)" />
         <button type="submit">{editingId ? 'Salvar' : "Criar"}</button>
         {editingId && (
