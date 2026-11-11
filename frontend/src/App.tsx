@@ -64,7 +64,7 @@ function App() {
           <button type="button" onClick={resetForm}>Cancelar</button>
         )}
       </form>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: 'var(--danger)' }}>{error}</p>}
 
       <table>
         <thead>
@@ -77,13 +77,14 @@ function App() {
           </tr>
         </thead>
         <tbody>
+          {users.length === 0 ? <p>Nenhum usuário cadastrado.</p> : <table>...</table>}
           {users.map((u) => (
             <tr key={u.id}>
               <td>{u.name}</td>
               <td>{u.email}</td>
               <td>{u.role || '-'}</td>
               <td>{new Date(u.createdAt).toLocaleString('pt-BR')}</td>
-              <td><button onClick={() => startEdit(u)}>Editar</button></td>
+              <td><button type="button" onClick={() => startEdit(u)}>Editar</button></td>
             </tr>
           ))}
         </tbody>

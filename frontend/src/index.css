@@ -2,32 +2,21 @@
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
+  --surface: #f7f6f9;
   --border: #e5e4e7;
-  --code-bg: #f4f3ec;
   --accent: #aa3bff;
+  --accent-hover: #9425f0;
   --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --danger: #dc2626;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
+  font: 16px/145% var(--sans);
   color-scheme: light dark;
   color: var(--text);
   background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -35,77 +24,133 @@
     --text: #9ca3af;
     --text-h: #f3f4f6;
     --bg: #16171d;
+    --surface: #1f2028;
     --border: #2e303a;
-    --code-bg: #1f2028;
     --accent: #c084fc;
+    --accent-hover: #a855f7;
     --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+    --danger: #f87171;
   }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
 }
 
 body {
   margin: 0;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+#root {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  box-sizing: border-box;
 }
 
 h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 24px;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
+/* ---------- Formulário ---------- */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+input {
+  flex: 1 1 180px;
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--text-h);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+input:focus {
+  border-color: var(--accent);
+}
+
+/* ---------- Botões ---------- */
+button {
+  padding: 10px 16px;
+  font: inherit;
+  font-weight: 500;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+button[type='submit'] {
+  color: #fff;
+  background: var(--accent);
+}
+
+button[type='submit']:hover {
+  background: var(--accent-hover);
+}
+
+button[type='button'] {
+  color: var(--text-h);
+  background: transparent;
+  border-color: var(--border);
+}
+
+button[type='button']:hover {
+  border-color: var(--text);
+}
+
+/* Botão "Editar" dentro da tabela */
+td button {
+  padding: 6px 12px;
+  font-size: 14px;
+  color: var(--accent);
+  background: var(--accent-bg);
+}
+
+td button:hover {
+  border-color: var(--accent);
+}
+
+p {
+  margin: 0 0 16px;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+td {
   color: var(--text-h);
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+tbody tr:hover {
+  background: var(--surface);
 }
